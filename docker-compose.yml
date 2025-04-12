@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres:14
+    container_name: nuts-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: nutsdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  app:
+    build: .
+    container_name: nuts-app
+    depends_on:
+      - db
+    env_file:
+      - .env
+    volumes:
+      - .:/usr/src/app
+    working_dir: /usr/src/app
+    command: sh -c "npm install && npm run migrate && npm start"
+    ports:
+      - "3000:3000"
+
+volumes:
+  pgdata:
