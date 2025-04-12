@@ -1,0 +1,26 @@
+{
+  "name": "software-engineering-hw1",
+  "type": "commonjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.mjs",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "migrate": "dotenv -e .env -- node-pg-migrate up",
+    "migrate:create": "node-pg-migrate create"
+  },
+  "private": true,
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "nats": "^2.29.3",
+    "node-pg-migrate": "^7.9.1",
+    "pg": "^8.14.1"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.11.12",
+    "dotenv-cli": "^8.0.0",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
